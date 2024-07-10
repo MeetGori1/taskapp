@@ -10,6 +10,7 @@ import java.time.LocalDateTime
     name = "task",
     uniqueConstraints = [UniqueConstraint(name = "uk_task_description", columnNames = ["description"])]
 )
+
 class Task {
 
     @Id
@@ -21,18 +22,16 @@ class Task {
     @Column(name = "description", nullable = false, unique = true)
     var description: String = ""
 
-    @Column(name = "is_reminder_set", nullable = false)
+    @Column(name = "is_reminder_set", nullable = true)
     var isReminderSet: Boolean = false
 
-    @Column(name = "is_task_open", nullable = false)
+    @Column(name = "is_task_open", nullable = true)
     var isTaskOpen = true
 
-    @Column(name = "create_on", nullable = false)
+    @Column(name = "create_on", nullable = true)
     val createdOn:LocalDateTime=LocalDateTime.now()
-
 
     @NotNull
     @Enumerated(EnumType.STRING)
     var priority:Priority=Priority.LOW
-
 }
