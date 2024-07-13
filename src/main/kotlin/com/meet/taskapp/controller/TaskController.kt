@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -31,7 +32,7 @@ class TaskController(private val service: TaskService) {
     fun getAllTaskById(@PathVariable id: Long): ResponseEntity<TaskDto> =
         ResponseEntity(service.getTaskById(id), HttpStatus.OK)
 
-    @GetMapping("create")
+    @PostMapping("create")
     fun createTask(@Valid @RequestBody request: TaskCreateRequest): ResponseEntity<TaskDto> =
         ResponseEntity(service.createTask(request), HttpStatus.OK)
 
